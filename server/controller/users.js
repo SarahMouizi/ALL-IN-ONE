@@ -2,7 +2,7 @@ const userModel = require("../models/users");
 const bcrypt = require("bcryptjs");
 
 class User {
-  async getAllUser(req, res) {
+  async getAllUser(req, res) {    
     try {
       let Users = await userModel
         .find({})
@@ -84,18 +84,18 @@ class User {
   }
 
   async getDeleteUser(req, res) {
-    let { oId, status } = req.body;
-    if (!oId || !status) {
+    let { userID } = req.body;
+    if (!userID) {
       return res.json({ message: "All filled must be required" });
     } else {
-      let currentUser = userModel.findByIdAndUpdate(oId, {
-        status: status,
-        updatedAt: Date.now(),
-      });
-      currentUser.exec((err, result) => {
-        if (err) console.log(err);
-        return res.json({ success: "User updated successfully" });
-      });
+      try{
+        let deleteUser = await userModel.findByIdAndDelete(userID);
+        if (deleteUser) {
+          return res.json({ success: "User deleted successfully" });
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 

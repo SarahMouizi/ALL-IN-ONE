@@ -40,6 +40,15 @@ const Login = (props) => {
     }
   };
 
+  const showPassword=()=> {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
   return (
     <Fragment>
       <div className="text-center text-2xl mb-6">Login</div>
@@ -86,6 +95,7 @@ const Login = (props) => {
               !data.error ? "" : "border-red-500"
             } px-4 py-2 focus:outline-none border`}
           />
+          <span className="show-password" onClick={()=>{showPassword()}}>👁</span>
           {!data.error ? "" : alert(data.error)}
         </div>
         <div className="flex flex-col space-y-2 md:flex-row md:justify-between md:items-center">

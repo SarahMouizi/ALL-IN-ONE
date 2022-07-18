@@ -117,9 +117,20 @@ const AdminSidebar = (props) => {
               />
             </svg>
           </span>
-          <span className="hover:text-gray-800">Order</span>
+          <span className="hover:text-gray-800">Orders</span>
         </div>
         <hr className="border-b border-gray-200" />
+        <div
+          onClick={(e) => history.push("/admin/dashboard/users")}
+          className={`${
+            location.pathname === "/admin/dashboard/users"
+              ? "border-r-4 border-gray-800 bg-gray-100"
+              : ""
+          } hover:bg-gray-200 cursor-pointer flex flex-col items-center justify-center py-6`}
+        >
+          <span>웃</span>
+          <span className="hover:text-gray-800">Users</span>
+        </div>
       </div>
     </Fragment>
   );

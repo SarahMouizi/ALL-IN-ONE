@@ -1,9 +1,14 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { DashboardContext } from "./";
 import { GetAllData } from "./Action";
+import { useHistory } from "react-router-dom";
+
 
 const DashboardCard = (props) => {
   const { data, dispatch } = useContext(DashboardContext);
+
+  const history = useHistory();
+
 
   useEffect(() => {
     GetAllData(dispatch);
@@ -14,48 +19,10 @@ const DashboardCard = (props) => {
     <Fragment>
       {/* Card Start */}
       <div className="m-4 grid grid-cols-1 md:grid-cols-4 row-gap-4 col-gap-4">
-        <div className="flex flex-col justify-center items-center col-span-1 bg-white p-6 shadow-lg hover:shadow-none cursor-pointer transition-all duration-300 ease-in border-b-4 border-opacity-0 hover:border-opacity-100 border-indigo-200">
-          <div className="bg-indigo-200 p-2 cursor-pointer rounded-full">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-          </div>
-          <div className="text-2xl font-semibold">
-            {data ? data.totalData.Users : 0}
-          </div>
-          <div className="text-lg font-medium">Customers</div>
-          <div className="flex items-center space-x-1 text-green-500">
-            <span>7%</span>
-            <span>
-              <svg
-                className="w-3 h-3"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 10l7-7m0 0l7 7m-7-7v18"
-                />
-              </svg>
-            </span>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-center col-span-1 bg-white p-6 shadow-lg hover:shadow-none cursor-pointer transition-all duration-300 ease-in border-b-4 border-opacity-0 hover:border-opacity-100 border-red-200">
+        <div 
+          onClick={(e) => history.push("/admin/dashboard/orders")} 
+          className="flex flex-col justify-center items-center col-span-1 bg-white p-6 shadow-lg hover:shadow-none cursor-pointer transition-all duration-300 ease-in border-b-4 border-opacity-0 hover:border-opacity-100 border-red-200"
+        >
           <div className="bg-red-200 p-2 cursor-pointer rounded-full">
             <svg
               className="w-6 h-6"
@@ -76,27 +43,12 @@ const DashboardCard = (props) => {
             {data ? data.totalData.Orders : 0}
           </div>
           <div className="text-lg font-medium">Orders</div>
-          <div className="flex items-center space-x-1 text-green-500">
-            <span>10%</span>
-            <span>
-              <svg
-                className="w-3 h-3"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 10l7-7m0 0l7 7m-7-7v18"
-                />
-              </svg>
-            </span>
-          </div>
         </div>
-        <div className="flex flex-col justify-center items-center col-span-1 bg-white p-6 shadow-lg hover:shadow-none cursor-pointer transition-all duration-300 ease-in border-b-4 border-opacity-0 hover:border-opacity-100 border-green-200">
+
+        <div 
+          onClick={(e) => history.push("/admin/dashboard/products")} 
+          className="flex flex-col justify-center items-center col-span-1 bg-white p-6 shadow-lg hover:shadow-none cursor-pointer transition-all duration-300 ease-in border-b-4 border-opacity-0 hover:border-opacity-100 border-green-200"
+        >
           <div className="bg-green-200 p-2 cursor-pointer rounded-full">
             <svg
               className="w-6 h-6"
@@ -116,7 +68,11 @@ const DashboardCard = (props) => {
           </div>
           <div className="text-lg font-medium">Product</div>
         </div>
-        <div className="flex flex-col justify-center items-center col-span-1 bg-white p-6 shadow-lg hover:shadow-none cursor-pointer transition-all duration-300 ease-in border-b-4 border-opacity-0 hover:border-opacity-100 border-orange-200">
+
+        <div 
+          onClick={(e) => history.push("/admin/dashboard/categories")} 
+          className="flex flex-col justify-center items-center col-span-1 bg-white p-6 shadow-lg hover:shadow-none cursor-pointer transition-all duration-300 ease-in border-b-4 border-opacity-0 hover:border-opacity-100 border-orange-200"
+        >
           <div className="bg-orange-200 p-2 cursor-pointer rounded-full">
             <svg
               className="w-6 h-6"
@@ -137,6 +93,17 @@ const DashboardCard = (props) => {
             {data ? data.totalData.Categories : 0}
           </div>
           <div className="text-lg font-medium">Categories</div>
+        </div>
+
+        <div 
+          onClick={(e) => history.push("/admin/dashboard/users")} 
+          className="flex flex-col justify-center items-center col-span-1 bg-white p-6 shadow-lg hover:shadow-none cursor-pointer transition-all duration-300 ease-in border-b-4 border-opacity-0 hover:border-opacity-100 border-green-200"
+        >
+          <div className="bg-yellow-200 p-2 cursor-pointer rounded-full">웃</div>
+          <div className="text-2xl font-semibold">
+            {data ? data.totalData.Products : 0}
+          </div>
+          <div className="text-lg font-medium">Users</div>
         </div>
       </div>
       {/* End Card */}

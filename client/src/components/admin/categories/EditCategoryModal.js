@@ -122,7 +122,7 @@ const EditCategoryModal = (props) => {
               onClick={(e) => submitForm()}
               className="rounded-full bg-gray-800 text-gray-100 text-lg font-medium py-2"
             >
-              Create category
+              Edit category
             </button>
           </div>
         </div>

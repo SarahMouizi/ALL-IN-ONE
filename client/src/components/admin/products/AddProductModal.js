@@ -288,7 +288,7 @@ const AddProductDetail = ({ categories }) => {
                 />
               </div>
               <div className="w-1/2 flex flex-col space-y-1">
-                <label htmlFor="offer">Product Offfer (%) *</label>
+                <label htmlFor="offer">Discount on product (%) *</label>
                 <input
                   value={fData.pOffer}
                   onChange={(e) =>

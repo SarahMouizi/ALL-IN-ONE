@@ -58,6 +58,23 @@ const Signup = (props) => {
     }
   };
 
+  const showPassword=()=> {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  const showConfirmedPassword=()=> {
+    var x = document.getElementById("cPassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   return (
     <Fragment>
       <div className="text-center text-2xl mb-6">Register</div>
@@ -127,6 +144,7 @@ const Signup = (props) => {
               data.error.password ? "border-red-500" : ""
             } px-4 py-2 focus:outline-none border`}
           />
+          <span className="show-password" onClick={()=>{showPassword()}}>👁</span>
           {!data.error ? "" : alert(data.error.password, "red")}
         </div>
         <div className="flex flex-col">
@@ -150,6 +168,7 @@ const Signup = (props) => {
               data.error.cPassword ? "border-red-500" : ""
             } px-4 py-2 focus:outline-none border`}
           />
+          <span className="show-password" onClick={()=>{showConfirmedPassword()}}>👁</span>
           {!data.error ? "" : alert(data.error.cPassword, "red")}
         </div>
         <div className="flex flex-col space-y-2 md:flex-row md:justify-between md:items-center">

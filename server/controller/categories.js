@@ -1,5 +1,7 @@
 const { toTitleCase } = require("../config/function");
 const categoryModel = require("../models/categories");
+const productModel = require("../models/products");
+
 const fs = require("fs");
 
 class Category {
@@ -81,22 +83,29 @@ class Category {
     if (!cId) {
       return res.json({ error: "All filled must be required" });
     } else {
-      try {
-        let deletedCategoryFile = await categoryModel.findById(cId);
-        const filePath = `../server/public/uploads/categories/${deletedCategoryFile.cImage}`;
 
-        let deleteCategory = await categoryModel.findByIdAndDelete(cId);
-        if (deleteCategory) {
-          // Delete Image from uploads -> categories folder 
-          fs.unlink(filePath, (err) => {
-            if (err) {
-              console.log(err);
-            }
-            return res.json({ success: "Category deleted successfully" });
-          });
+      let categoryHasProducts = await productModel.find({"pCategory":cId})
+
+      if(categoryHasProducts.length > 0){
+        console.log("Cannot delete a category with products")
+      }else{
+        try {
+          let deletedCategoryFile = await categoryModel.findById(cId);
+          const filePath = `../server/public/uploads/categories/${deletedCategoryFile.cImage}`;
+  
+          let deleteCategory = await categoryModel.findByIdAndDelete(cId);
+          if (deleteCategory) {
+            // Delete Image from uploads -> categories folder 
+            fs.unlink(filePath, (err) => {
+              if (err) {
+                console.log(err);
+              }
+              return res.json({ success: "Category deleted successfully" });
+            });
+          }
+        } catch (err) {
+          console.log(err);
         }
-      } catch (err) {
-        console.log(err);
       }
     }
   }

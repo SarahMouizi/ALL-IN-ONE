@@ -16,7 +16,7 @@ exports.loginCheck = (req, res, next) => {
   }
 };
 
-exports.isAuth = (req, res, next) => {
+exports.isAuth = (req, res, next) => { 
   let { loggedInUserId } = req.body;
   if (
     !loggedInUserId ||

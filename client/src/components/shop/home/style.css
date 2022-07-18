@@ -25,3 +25,17 @@
   background: #b7791f;
   cursor: pointer;
 }
+
+.card-image{
+  height: 250px;
+}
+
+.products-container{
+
+  border: #b7791f 2px solid;
+}
+
+.slider-image{
+  height: 500px;
+  object-fit: cover;
+}

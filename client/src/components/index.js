@@ -14,6 +14,7 @@ import { DashboardAdmin, Categories, Products, Orders } from "./admin";
 import { UserProfile, UserOrders, SettingUser } from "./shop/dashboardUser";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import  Users  from "./admin/users/users"
 
 /* Routing All page will be here */
 const Routes = (props) => {
@@ -56,6 +57,11 @@ const Routes = (props) => {
           exact={true}
           path="/admin/dashboard/orders"
           component={Orders}
+        />
+        <AdminProtectedRoute
+          exact={true}
+          path="/admin/dashboard/users"
+          component={Users}
         />
         {/* Admin Routes End */}
 

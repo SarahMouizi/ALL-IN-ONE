@@ -8,3 +8,8 @@
   flex-direction: column;
   transition: all 1s;
 }
+
+.navbarContainer{
+  display: flex;
+  justify-content: space-between;
+}

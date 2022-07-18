@@ -73,10 +73,10 @@ export const handleChangePassword = async (fData, setFdata, dispatch) => {
   if (!fData.newPassword || !fData.oldPassword || !fData.confirmPassword) {
     setFdata({
       ...fData,
-      error: "Please provide your all password and a new password",
+      error: "Please provide the old password and a new password",
     });
   } else if (fData.newPassword !== fData.confirmPassword) {
-    setFdata({ ...fData, error: "Password does't match" });
+    setFdata({ ...fData, error: "Password doesn't match" });
   } else {
     const formData = {
       uId: JSON.parse(localStorage.getItem("jwt")).user._id,

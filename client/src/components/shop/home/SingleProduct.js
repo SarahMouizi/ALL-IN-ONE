@@ -65,7 +65,7 @@ const SingleProduct = (props) => {
               <div className="relative col-span-1 m-2">
                 <img
                   onClick={(e) => history.push(`/products/${item._id}`)}
-                  className="w-full object-cover object-center cursor-pointer"
+                  className="w-full object-cover object-center cursor-pointer card-image"
                   src={`${apiURL}/uploads/products/${item.pImages[0]}`}
                   alt=""
                 />
@@ -95,7 +95,7 @@ const SingleProduct = (props) => {
                     </span>
                   </div>
                 </div>
-                <div>${item.pPrice}.00</div>
+                <div>{item.pPrice}.00 DT</div>
                 {/* WhisList Logic  */}
                 <div className="absolute top-0 right-0 mx-2 my-2 md:mx-4">
                   <svg
